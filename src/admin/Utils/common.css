@@ -1,0 +1,292 @@
+.sidebar {
+  z-index: 0;
+  width: 250px;
+  height: calc(100vh - 66px); /* Matches header height + padding */
+ background: linear-gradient(
+  180deg,
+  var(--primary-dark) 0%,
+  var(--primary-color) 70%,
+  white 100%
+);
+
+  position: fixed;
+  left: 0;
+  top: 66px; /* Header height + padding */
+  padding: 1.5rem 0;
+  z-index: 99; /* Just below header */
+  box-shadow: var(--shadow-md);
+  transform: translateX(-100%);
+  animation: slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-y: auto;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar li {
+  margin: 0 0.8rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  transition: var(--transition);
+}
+
+.sidebar li:hover {
+  background: rgba(0, 180, 216, 0.1);
+}
+
+.sidebar a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1.2rem;
+  transition: var(--transition);
+  font-size: 0.95rem;
+}
+
+.sidebar .icon {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  color: var(--accent-color);
+  transition: var(--transition);
+  min-width: 24px;
+  text-align: center;
+}
+
+.sidebar span {
+  position: relative;
+  transition: var(--transition);
+}
+
+/* Hover Effects */
+.sidebar li:hover a {
+  padding-left: 1.5rem;
+}
+
+.sidebar li:hover .icon {
+  transform: scale(1.15);
+  color: var(--white);
+}
+
+.sidebar li:hover span {
+  color: var(--white);
+}
+
+/* Active Link */
+.sidebar .active-link {
+  background: rgba(0, 180, 216, 0.2);
+}
+
+.sidebar .active-link .icon {
+  color: var(--white);
+  animation: iconPulse 0.6s ease;
+}
+
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar {
+    top: 110px;
+    width: 60px;
+    padding: 1rem 0;
+  }
+
+  .sidebar span {
+    position: absolute;
+    left: 60px;
+    background: var(--primary-dark);
+    padding: 0.8rem 1.5rem;
+    border-radius: 0 4px 4px 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    white-space: nowrap;
+    box-shadow: var(--shadow-md);
+  }
+
+  .sidebar li:hover span {
+    opacity: 1;
+    transform: translateX(8px);
+  }
+
+  .sidebar a {
+    justify-content: center;
+    padding: 0.8rem 0;
+  }
+
+  .sidebar .icon {
+    margin-right: 0;
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    top: 60px; /* Adjusted for smaller header */
+    height: calc(100vh - 60px);
+  }
+}
+
+/* Combined CSS for Layout + Sidebar */
+.dashboard-admin {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--secondary-color);
+}
+
+.content {
+  flex: 1;
+  padding: 2rem;
+  margin-left: 250px; /* Matches sidebar width */
+  transition: var(--transition);
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  /* background: var(--primary-dark); */
+  position: fixed;
+  padding: 1.5rem 0;
+  box-shadow: var(--shadow-md);
+  z-index: 90;
+  overflow-y: auto;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar li {
+  margin: 0 0.8rem;
+  border-radius: 6px;
+  transition: var(--transition);
+}
+
+.sidebar a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1.2rem;
+  transition: var(--transition);
+}
+
+.sidebar .icon {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  color: var(--accent-color);
+  transition: var(--transition);
+}
+
+/* Active/Hover States */
+.sidebar li:hover {
+  background: rgba(0, 180, 216, 0.1);
+}
+
+.sidebar .active-link {
+  background: rgba(0, 180, 216, 0.2);
+}
+
+.sidebar .active-link .icon {
+  color: var(--white);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 70px;
+  }
+  
+  .content {
+    margin-left: 70px;
+    padding: 1.5rem;
+  }
+  
+  .sidebar span {
+    display: none;
+  }
+  
+  .sidebar .icon {
+    margin-right: 0;
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    top: 110px; 
+    width: 60px;
+  }
+  
+  .content {
+    margin-left: 60px;
+    padding: 1rem;
+  }
+}
+/* Animation for sidebar items */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.sidebar li {
+  animation: fadeIn 0.4s ease forwards;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+/* Add these new styles */
+.dashboard-admin {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+
+.main-content-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 250px; /* Matches sidebar width */
+  min-height: 100vh;
+  position: relative;
+  z-index: 2; /* Higher than sidebar */
+}
+
+.content {
+  flex: 1;
+  padding: 2rem;
+}
+
+/* Update sidebar z-index */
+.sidebar {
+  z-index: 1; /* Lower than main content */
+  /* ... keep all other sidebar styles ... */
+}
+
+/* Update footer styles */
+.portfolio-footer {
+  z-index: 3; /* Higher than both sidebar and main content */
+  position: relative;
+  /* ... keep all other footer styles ... */
+}

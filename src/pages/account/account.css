@@ -1,0 +1,88 @@
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  padding: 2rem;
+}
+
+.profile {
+  background-color: var(--white);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  max-width: 400px;
+  transition: var(--transition);
+
+  &:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    color: var(--primary-dark);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background-color: var(--accent-color);
+    }
+  }
+
+  .profile-info {
+    p {
+      margin-bottom: 1.2rem;
+      font-size: 1.1rem;
+      color: var(--text-color);
+      line-height: 1.6;
+
+      strong {
+        color: var(--primary-color);
+        margin-right: 0.5rem;
+      }
+    }
+  }
+  .logoff{
+    background-color: red;
+    .logoff-icon{
+      font-size: 24px;
+    }
+  }
+
+  .common-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem;
+    margin-top: 1rem;
+    
+
+    .dashboard-icon {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    max-width: 90%;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .profile-info p {
+      font-size: 1rem;
+    }
+  }
+}

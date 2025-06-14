@@ -1,0 +1,59 @@
+.payment-suc-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  background-color: var(--secondary-color);
+  padding: 2rem;
+
+  .suc-message {
+    background-color: var(--white);
+    color: var(--text-color);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    padding: 2.5rem;
+    border-radius: 12px;
+    border-top: 4px solid var(--accent-color);
+
+    h2 {
+      font-size: 1.8rem;
+      color: var(--primary-dark);
+      margin-bottom: 1.2rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+
+      strong {
+        color: var(--primary-color);
+      }
+    }
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .payment-suc-page {
+    padding: 1.5rem;
+
+    .suc-message {
+      padding: 1.5rem;
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+}
