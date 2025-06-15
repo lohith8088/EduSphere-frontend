@@ -27,7 +27,6 @@
   margin-bottom: 0.5rem;
 }
 
-
 .auth-form {
   display: flex;
   flex-direction: column;
@@ -46,14 +45,12 @@
   font-size: 0.95rem;
 }
 .form-group input {
-  width: 100%;
+  width: 90%;
   padding: 0.8rem 0.1rem 0.8rem 0.5rem; /* Adjust these values to make inputs smaller */
   border: 1px solid var(--text-light);
   border-radius: 8px;
   font-size: 1rem;
   transition: var(--transition);
-
-  
 }
 
 .form-group input:focus {
@@ -61,8 +58,6 @@
   border-color: var(--accent-color);
   box-shadow: 0 0 0 2px rgba(0, 180, 216, 0.2);
 }
-
-
 
 .auth-btn:hover {
   background-color: var(--primary-dark);
@@ -92,7 +87,7 @@
   .auth-container {
     padding: 1.5rem;
   }
-  
+
   .auth-header h2 {
     font-size: 1.5rem;
   }

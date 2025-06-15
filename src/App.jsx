@@ -22,6 +22,8 @@ import Lecture from "./pages/lecture/Lecture.jsx";
 import AdminDB from "./admin/Dashboard/AdminDB.jsx";
 import AdminCourses from "./admin/Courses/AdminCourses.jsx";
 import AdminUsers from "./admin/Users/AdminUsers.jsx";
+import Forgot from "./pages/Auth/Forgot.jsx";
+import ResetPass from "./pages/Auth/ResetPass.jsx";
 
 const App = () => {
   const { isAuth, user, loading } = UserData();
@@ -47,6 +49,10 @@ const App = () => {
               element={isAuth ? <Home /> : <Register />}
             />
             <Route path="/verify" element={isAuth ? <Home /> : <Verify />} />
+            <Route path="/forgot" element={isAuth ? <Home /> : <Forgot />} />
+            <Route path="/reset-password/:token" element={isAuth ? <Home /> : <ResetPass />} />
+            
+            
             <Route
               path="/course/:id"
               element={isAuth ? <CourseDesc user={user} /> : <Login />}
