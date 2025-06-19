@@ -33,7 +33,7 @@ const CourseCard = ({ course }) => {
 
   return (
     <div className="course-card">
-      <img src={`${server}/${course.image}`} alt={course.title} />
+      <img src={course.image} alt={course.title} />
       <div className="course-details">
         <h3>{course.title}</h3>
         <p className="instructor">Instructor: {course.createdBY}</p>

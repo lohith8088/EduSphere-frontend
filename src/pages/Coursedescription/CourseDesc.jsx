@@ -8,10 +8,9 @@ import { UserData } from "../../context/UserContext";
 import Loading from "../../components/loading/Loading";
 import toast from "react-hot-toast";
 
-
 const CourseDesc = ({ user }) => {
   const params = useParams();
-  const { fetchCourses, fetchCourse, fetchMyCourse, course  } = courseData();
+  const { fetchCourses, fetchCourse, fetchMyCourse, course } = courseData();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const { fetchUser } = UserData();
@@ -70,57 +69,60 @@ const CourseDesc = ({ user }) => {
           setLoading(false);
         }
       },
-      theme:{
+      theme: {
         color: "#E0F7FA", // Customize the theme color
-      }
+      },
     };
-    const razorpay=new window.Razorpay(options);
+    const razorpay = new window.Razorpay(options);
     razorpay.open();
   };
   return (
-   <>
-   {
-    loading?<Loading />:( <div className="course-desc">
-      {course ? (
-        <>
-          <div className="course-header">
-            <img
-              src={`${server}/${course.image}`}
-              className="Course-img"
-              alt={course.title || "Course"}
-            />
-
-            <div className="course-info">
-              <h2>Master {course.title} - Comprehensive Learning</h2>
-              <p>Taught by: {course.createdBY || "Industry Expert"}</p>
-              <p>
-                Course Duration: {course.duration} hours of expert-led content
-              </p>
-              <p className="price-highlight">
-                Start your journey for just ₹{course.price}
-              </p>
-            </div>
-
-            {user && user.subscription.includes(course._id) ? (
-              <button
-                className="common-btn"
-                onClick={() => navigate(`/course/study/${course._id}`)}
-              >
-                Continue Learning
-              </button>
-            ) : (
-              <button className="common-btn" onClick={checkoutHandler}>
-                Enroll Now - Limited Seats!
-              </button>
-            )}
-          </div>
-        </>
+    <>
+      {loading ? (
+        <Loading />
       ) : (
-        <p className="loading-text">Loading course details...</p>
+        <div className="course-desc">
+          {course ? (
+            <>
+              <div className="course-header">
+                <img
+                  src={course.image}
+                  className="Course-img"
+                  alt={course.title || "Course"}
+                />
+
+                <div className="course-info">
+                  <h2>Master {course.title} - Comprehensive Learning</h2>
+                  <p>Taught by: {course.createdBY || "Industry Expert"}</p>
+                  <p>
+                    Course Duration: {course.duration} hours of expert-led
+                    content
+                  </p>
+                  <p className="price-highlight">
+                    Start your journey for just ₹{course.price}
+                  </p>
+                </div>
+
+                {user && user.subscription.includes(course._id) ? (
+                  <button
+                    className="common-btn"
+                    onClick={() => navigate(`/course/study/${course._id}`)}
+                  >
+                    Continue Learning
+                  </button>
+                ) : (
+                  <button className="common-btn" onClick={checkoutHandler}>
+                    Enroll Now - Limited Seats!
+                  </button>
+                )}
+              </div>
+            </>
+          ) : (
+            <p className="loading-text">Loading course details...</p>
+          )}
+        </div>
       )}
-    </div>)
-   }
-   </>
+    </>
   );
 };
 

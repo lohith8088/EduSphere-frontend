@@ -22,7 +22,7 @@ const CourseStudy = ({ user }) => {
       {course && (
         <div className="course-study-card">
           <img 
-            src={`${server}/${course.image}`} 
+            src={course.image} 
             alt={course.title} 
             className="course-thumbnail"
           />

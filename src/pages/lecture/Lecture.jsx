@@ -107,6 +107,10 @@ const Lecture = ({ user }) => {
     }
   }
 
+  const addprogress=async(id)=>{
+    console.log("Lecture completed")
+  }
+
   const changeVideoHandler = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -134,11 +138,12 @@ const Lecture = ({ user }) => {
               <>
                 <div className="video-container">
                   <video
-                    src={`${server}/${lecture.video}`}
+                    src={lecture.video}
                     controls
                     controlsList="nodownload noremoteplayback"
                     disableRemotePlayback
                     autoPlay
+                    onEnded={()=>addprogress(lecture._id)}
                   ></video>
                 </div>
                 <div className="lecture-info">

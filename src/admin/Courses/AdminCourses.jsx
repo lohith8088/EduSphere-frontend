@@ -30,7 +30,7 @@ const AdminCourses = ({ user }) => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
-  const [createdBy, setCreatedBy] = useState("");
+  const [createdBY, setCreatedBy] = useState("");
   const [duration, setDuration] = useState("");
   const [image, setImage] = useState("");
   const [imagePreview, setImagePreview] = useState("");
@@ -46,34 +46,38 @@ const AdminCourses = ({ user }) => {
     };
   };
 
-
   const submitHandler = async (e) => {
     e.preventDefault();
-    
 
-    if (!title || !description || !price || !category || !createdBy || !duration || !image) {
+    if (
+      !title ||
+      !description ||
+      !price ||
+      !category ||
+      !createdBY ||
+      !duration ||
+      !image
+    ) {
       alert("Please fill all fields");
       return;
     }
 
-
     setLoading(true);
     const formData = new FormData();
-      formData.append("title", title);
-      formData.append("description", description);
-      formData.append("price", price);
-      formData.append("category", category);
-      formData.append("createdBy", createdBy);
-      formData.append("duration", duration);
-      formData.append("file", image);
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("price", price);
+    formData.append("category", category);
+    formData.append("createdBY", createdBY);
+    formData.append("duration", duration);
+    formData.append("file", image);
     try {
-      const {data} = await axios.post(`${server}/api/course/new`, formData, {
+      const { data } = await axios.post(`${server}/api/course/new`, formData, {
         headers: {
           token: localStorage.getItem("token"),
         },
       });
       toast.success("Course created successfully!");
-
 
       setTitle("");
       setDescription("");
@@ -83,7 +87,7 @@ const AdminCourses = ({ user }) => {
       setDuration("");
       setImage("");
       setImagePreview("");
-      
+
       fetchCourses(); // Refresh courses list
     } catch (error) {
       toast.error("Failed to create course. Please try again.");
@@ -91,7 +95,7 @@ const AdminCourses = ({ user }) => {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   return (
     <Layout>
@@ -189,9 +193,9 @@ const AdminCourses = ({ user }) => {
                 <input
                   type="text"
                   placeholder="Course creator's name"
-                  value={createdBy}
+                  value={createdBY}
                   onChange={(e) => setCreatedBy(e.target.value)}
-                  required
+                  required 
                 />
               </div>
 
